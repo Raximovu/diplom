@@ -50,6 +50,7 @@ List<WidgetModel> data = [
     name: "Geografiya Sirlarini o'rganish",
   ),
 ];
+var scaffoldKey = GlobalKey<ScaffoldState>();
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
@@ -57,11 +58,111 @@ class _HomeScreenState extends State<HomeScreen> {
     double h = Utils.height(context);
     double w = Utils.width(context);
     return Scaffold(
+      key: scaffoldKey,
       backgroundColor: AppTheme.green,
       appBar: AppBar(
         toolbarHeight: 0.0,
         elevation: 0,
         backgroundColor: AppTheme.green,
+      ),
+      drawer: Drawer(
+        backgroundColor: AppTheme.green,
+        width: MediaQuery.of(context).size.width - 140 * w,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(height: 24 * h),
+            Container(
+              height: 56 * h,
+              width: MediaQuery.of(context).size.width - 116 * w,
+              padding: EdgeInsets.only(
+                left: 16 * w,
+                top: 16 * h,
+              ),
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: AppTheme.whiteScreen,
+                    width: 1,
+                  ),
+                ),
+              ),
+              child: const Text(
+                "Interesting Chemistry",
+                style: TextStyle(
+                  color: AppTheme.white,
+                ),
+              ),
+            ),
+            Container(
+              height: 56 * h,
+              width: MediaQuery.of(context).size.width - 116 * w,
+              padding: EdgeInsets.only(
+                left: 16 * w,
+                top: 16 * h,
+              ),
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: AppTheme.whiteScreen,
+                    width: 1,
+                  ),
+                ),
+              ),
+              child: const Text(
+                "Interesting Chemistry",
+                style: TextStyle(
+                  color: AppTheme.white,
+                ),
+              ),
+            ),
+            Container(
+              height: 56 * h,
+              width: MediaQuery.of(context).size.width - 116 * w,
+              padding: EdgeInsets.only(
+                left: 16 * w,
+                top: 16 * h,
+              ),
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: AppTheme.whiteScreen,
+                    width: 1,
+                  ),
+                ),
+              ),
+              child: const Text(
+                "Interesting Chemistry",
+                style: TextStyle(
+                  color: AppTheme.white,
+                ),
+              ),
+            ),
+            Container(
+              height: 56 * h,
+              width: MediaQuery.of(context).size.width - 116 * w,
+              padding: EdgeInsets.only(
+                left: 16 * w,
+                top: 16 * h,
+              ),
+              decoration: const BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(
+                    color: AppTheme.whiteScreen,
+                    width: 1,
+                  ),
+                ),
+              ),
+              child: const Text(
+                "Interesting Chemistry",
+                style: TextStyle(
+                  color: AppTheme.white,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
       body: Stack(
         children: [
@@ -93,7 +194,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Material(
                         color: Colors.transparent,
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            scaffoldKey.currentState?.openDrawer();
+                          },
                           borderRadius: BorderRadius.circular(56),
                           focusColor: AppTheme.green,
                           splashColor: AppTheme.green.withOpacity(0.8),
