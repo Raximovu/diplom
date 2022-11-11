@@ -14,11 +14,41 @@ class HomeScreen extends StatefulWidget {
 }
 
 List<WidgetModel> data = [
-  WidgetModel(id: 1, picName: "one"),
-  WidgetModel(id: 2, picName: "two"),
-  WidgetModel(id: 3, picName: "three"),
-  WidgetModel(id: 4, picName: "four"),
-  WidgetModel(id: 5, picName: "five"),
+  WidgetModel(
+    id: 1,
+    image: "assets/images/1.jpg",
+    name: "Qiziqarli Geografiya",
+  ),
+  WidgetModel(
+    id: 2,
+    image: "assets/images/2.jpg",
+    name: "Olam",
+  ),
+  WidgetModel(
+    id: 3,
+    image: "assets/images/3.jpg",
+    name: "Sirlarini o'rganish",
+  ),
+  WidgetModel(
+    id: 4,
+    image: "assets/images/4.jpg",
+    name: "Dunyo o'rganish",
+  ),
+  WidgetModel(
+    id: 5,
+    image: "assets/images/5.jpg",
+    name: "Dunyo Qiziqarli o'rganish",
+  ),
+  WidgetModel(
+    id: 6,
+    image: "assets/images/6.jpg",
+    name: "Qiziqarli Sirlarini o'rganish",
+  ),
+  WidgetModel(
+    id: 7,
+    image: "assets/images/7.jpg",
+    name: "Geografiya Sirlarini o'rganish",
+  ),
 ];
 
 class _HomeScreenState extends State<HomeScreen> {
@@ -34,11 +64,11 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppTheme.whiteScreen,
       ),
       body: ListView.builder(
-        itemCount: 4,
+        itemCount: (data.length + 1) ~/ 2,
         padding: EdgeInsets.only(
-          bottom: 32 * h,
-          left: 24 * w,
-          right: 24 * w,
+          bottom: 24 * h,
+          left: 16 * w,
+          right: 16 * w,
         ),
         itemBuilder: (context, index) {
           return Row(
@@ -55,10 +85,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     );
                   },
-                  child: const BlockWidget(),
+                  child: BlockWidget(
+                    name: data[index].name,
+                    image: data[index].image,
+                    id: data[index].id,
+                  ),
                 ),
               ),
-              SizedBox(width: 24 * w),
+              SizedBox(width: 16 * w),
               Expanded(
                 child: index * 2 + 1 >= data.length
                     ? Container()
@@ -73,7 +107,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           );
                         },
-                        child: const BlockWidget(),
+                        child: BlockWidget(
+                          name: data[index * 2 + 1].name,
+                          id: data[index * 2 + 1].id,
+                          image: data[index * 2 + 1].image,
+                        ),
                       ),
               ),
             ],

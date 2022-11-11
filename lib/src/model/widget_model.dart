@@ -1,10 +1,12 @@
 class WidgetModel {
   WidgetModel({
     required this.id,
-    required this.picName,
+    required this.image,
+    required this.name,
   });
 
   int id;
-  String picName;
+  String image;
+  String name;
 
 }
