@@ -86,9 +86,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   },
                   child: BlockWidget(
-                    name: data[index].name,
-                    image: data[index].image,
-                    id: data[index].id,
+                    name: data[index * 2].name,
+                    image: data[index * 2].image,
+                    id: data[index * 2].id,
                   ),
                 ),
               ),
