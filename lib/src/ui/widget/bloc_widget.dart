@@ -26,13 +26,13 @@ class _BlockWidgetState extends State<BlockWidget> {
     return Container(
       height: (MediaQuery.of(context).size.width - 24 * w) / 2,
       decoration: BoxDecoration(
-        color: AppTheme.whiteScreen,
+        color: AppTheme.green,
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
             blurRadius: 40,
             spreadRadius: 0.2,
-            color: AppTheme.green.withOpacity(0.2),
+            color: AppTheme.green.withOpacity(0.5),
             offset: Offset(0, 8 * h),
           ),
         ],
@@ -68,7 +68,7 @@ class _BlockWidgetState extends State<BlockWidget> {
                 widget.name,
                 maxLines: 2,
                 style: const TextStyle(
-                  color: AppTheme.green,
+                  color: AppTheme.whiteScreen,
                   fontFamily: AppTheme.fontFamily,
                   fontWeight: FontWeight.w700,
                   fontSize: 17,

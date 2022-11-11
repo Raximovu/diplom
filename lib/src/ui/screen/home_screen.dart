@@ -57,66 +57,143 @@ class _HomeScreenState extends State<HomeScreen> {
     double h = Utils.height(context);
     double w = Utils.width(context);
     return Scaffold(
-      backgroundColor: AppTheme.whiteScreen,
+      backgroundColor: AppTheme.green,
       appBar: AppBar(
         toolbarHeight: 0.0,
         elevation: 0,
-        backgroundColor: AppTheme.whiteScreen,
+        backgroundColor: AppTheme.green,
       ),
-      body: ListView.builder(
-        itemCount: (data.length + 1) ~/ 2,
-        padding: EdgeInsets.only(
-          bottom: 24 * h,
-          left: 16 * w,
-          right: 16 * w,
-        ),
-        itemBuilder: (context, index) {
-          return Row(
+      body: Stack(
+        children: [
+          Image.asset(
+            "assets/images/4.jpg",
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            fit: BoxFit.cover,
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) {
-                          return const BlocCategoryScreen();
-                        },
+              Container(
+                color: AppTheme.green,
+                child: Row(
+                  children: [
+                    Container(
+                      height: 56 * w,
+                      width: 56 * w,
+                      margin: EdgeInsets.only(
+                        left: 4 * w,
+                        top: 4 * h,
+                        bottom: 4 * h,
                       ),
-                    );
-                  },
-                  child: BlockWidget(
-                    name: data[index * 2].name,
-                    image: data[index * 2].image,
-                    id: data[index * 2].id,
-                  ),
-                ),
-              ),
-              SizedBox(width: 16 * w),
-              Expanded(
-                child: index * 2 + 1 >= data.length
-                    ? Container()
-                    : GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                              builder: (context) {
-                                return const BlocCategoryScreen();
-                              },
+                      decoration: BoxDecoration(
+                        color: AppTheme.green,
+                        borderRadius: BorderRadius.circular(56),
+                      ),
+                      child: Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          onTap: () {},
+                          borderRadius: BorderRadius.circular(56),
+                          focusColor: AppTheme.green,
+                          splashColor: AppTheme.green.withOpacity(0.8),
+                          child: const Center(
+                            child: Icon(
+                              Icons.menu,
+                              color: AppTheme.whiteScreen,
+                              size: 28,
                             ),
-                          );
-                        },
-                        child: BlockWidget(
-                          name: data[index * 2 + 1].name,
-                          id: data[index * 2 + 1].id,
-                          image: data[index * 2 + 1].image,
+                          ),
                         ),
                       ),
+                    ),
+                    const Expanded(
+                      child: Center(
+                        child: Text(
+                          "Kimyo",
+                          style: TextStyle(
+                            color: AppTheme.whiteScreen,
+                            fontFamily: AppTheme.fontFamily,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 32,
+                            letterSpacing: 0.4,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 60 * w),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: (data.length + 1) ~/ 2,
+                  padding: EdgeInsets.only(
+                    bottom: 24 * h,
+                    left: 16 * w,
+                    right: 16 * w,
+                  ),
+                  itemBuilder: (context, index) {
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                CupertinoPageRoute(
+                                  builder: (context) {
+                                    return BlocCategoryScreen(
+                                      name: data[index * 2].name,
+                                      image: data[index * 2].image,
+                                      id: data[index * 2].id,
+                                    );
+                                  },
+                                ),
+                              );
+                            },
+                            child: BlockWidget(
+                              name: data[index * 2].name,
+                              image: data[index * 2].image,
+                              id: data[index * 2].id,
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 16 * w),
+                        Expanded(
+                          child: index * 2 + 1 >= data.length
+                              ? Container()
+                              : GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      CupertinoPageRoute(
+                                        builder: (context) {
+                                          return BlocCategoryScreen(
+                                            name: data[index * 2 + 1].name,
+                                            id: data[index * 2 + 1].id,
+                                            image: data[index * 2 + 1].image,
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                  child: BlockWidget(
+                                    name: data[index * 2 + 1].name,
+                                    id: data[index * 2 + 1].id,
+                                    image: data[index * 2 + 1].image,
+                                  ),
+                                ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
             ],
-          );
-        },
+          )
+        ],
       ),
     );
   }
